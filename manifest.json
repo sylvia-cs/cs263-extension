@@ -34,6 +34,6 @@
    "options_page": "data/options/options.html",
    "permissions": [ "storage", "\u003Call_urls>", "contextMenus", "webRequest", "webRequestBlocking" ],
    "short_name": "DMTDDNSYD",
-   "version": "1.0.0.0",
+   "version": "1.0.0",
    "web_accessible_resources": [ "data/content_script/*.css" ]
 }
